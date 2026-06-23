@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Convite Especial — Felipe</title>
+<style>
+  :root{
+    --black:#0A0A0A;
+    --paper:#F8F6F1;
+    --gold:#B8944E;
+    --green:#4D5D49;
+    --line:#DED7CA;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; overflow:hidden;
+    background:var(--paper); color:var(--black);
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  .stage{
+    min-height:100vh; display:grid; place-items:center; padding:28px 18px;
+    position:relative; overflow:hidden;
+  }
+  .stage::before,.stage::after{
+    content:""; position:absolute; width:260px; height:360px; opacity:.12;
+    border:1px solid var(--green); border-radius:65% 10% 65% 10%;
+    pointer-events:none;
+  }
+  .stage::before{left:-135px;top:-130px;transform:rotate(-30deg)}
+  .stage::after{right:-145px;bottom:-135px;transform:rotate(32deg)}
+  .panel{
+    width:min(850px,100%); min-height:min(760px,calc(100vh - 56px));
+    display:none; align-content:center; justify-items:center; text-align:center;
+    position:relative; z-index:2; padding:38px 32px;
+    animation:enter .65s ease both;
+  }
+  .panel.active{display:grid}
+  @keyframes enter{
+    from{opacity:0; transform:translateY(16px)}
+    to{opacity:1; transform:translateY(0)}
+  }
+  .monogram{
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:clamp(74px,14vw,145px);
+    letter-spacing:-12px; line-height:.8; font-weight:500;
+  }
+  .eyebrow{
+    margin-top:18px; text-transform:uppercase; letter-spacing:3.5px;
+    font-size:11px; color:#585858;
+  }
+  .label{
+    color:var(--gold); text-transform:uppercase; letter-spacing:2.6px;
+    font-weight:700; font-size:11px; margin-bottom:12px;
+  }
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:500;line-height:1.08;margin:0}
+  h1{font-size:clamp(38px,6.2vw,68px);max-width:760px}
+  h2{font-size:clamp(34px,5vw,55px);max-width:730px}
+  p{font-size:clamp(16px,2.2vw,19px);line-height:1.72;max-width:680px;margin:18px auto 0}
+  .gold-rule{
+    display:flex; align-items:center; justify-content:center; gap:11px;
+    color:var(--gold); margin:28px 0;
+  }
+  .gold-rule::before,.gold-rule::after{content:"";width:90px;height:1px;background:var(--gold)}
+  .button{
+    margin-top:31px; cursor:pointer; border:1px solid var(--black);
+    background:var(--black); color:#fff; border-radius:999px;
+    padding:15px 28px; font:700 14px Arial, sans-serif; letter-spacing:.2px;
+    transition:.22s ease;
+  }
+  .button:hover{background:transparent;color:var(--black)}
+  .subbutton{
+    border:0;background:transparent;color:#555;cursor:pointer;margin-top:18px;
+    font-size:13px;text-decoration:underline;text-underline-offset:4px;
+  }
+  .video-frame{
+    width:min(720px,100%); aspect-ratio:16/9; background:#111;
+    border:1px solid var(--line); position:relative; display:grid; place-items:center;
+    margin:26px auto 0;
+  }
+  .video-frame::after{content:"";position:absolute;inset:11px;border:1px solid rgba(255,255,255,.3)}
+  .video-note{color:#fff;padding:26px;position:relative;z-index:1}
+  .video-note strong{display:block;font:500 28px Georgia,serif;margin-bottom:9px}
+  .split{
+    width:min(770px,100%); display:grid; grid-template-columns:1fr 1fr;
+    gap:22px; text-align:left; margin-top:28px;
+  }
+  .mini-card{border:1px solid var(--line);padding:25px;background:rgba(255,255,255,.45)}
+  .mini-card strong{display:block;font:500 23px Georgia,serif;margin-bottom:9px}
+  .mini-card p{font-size:15px;margin:0;line-height:1.6}
+  .dress-card{
+    width:min(700px,100%);background:var(--black);color:#fff;padding:38px 34px;
+    position:relative;text-align:left;
+  }
+  .dress-card::before{content:"";position:absolute;inset:12px;border:1px solid rgba(255,255,255,.35)}
+  .dress-card>*{position:relative;z-index:1}
+  .dress-card h2{color:white;margin:0 0 16px}
+  .dress-list{list-style:none;padding:0;margin:20px 0 0}
+  .dress-list li{border-top:1px solid rgba(255,255,255,.25);padding:13px 0;line-height:1.45}
+  .dress-list strong{display:block;font-size:17px}
+  .final-note{font-size:14px;color:#777;margin-top:16px}
+  .progress{
+    position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+    display:flex;gap:7px;z-index:3
+  }
+  .dot{width:7px;height:7px;border-radius:999px;background:#d3ccc0}
+  .dot.active{background:var(--gold);transform:scale(1.25)}
+  @media(max-width:680px){
+    .panel{padding:28px 18px;min-height:calc(100vh - 44px)}
+    .split{grid-template-columns:1fr}
+    .dress-card{padding:30px 25px}
+    .gold-rule{margin:20px 0}
+  }
+</style>
+</head>
+<body>
+<main class="stage">
+
+  <section class="panel active" data-step="1">
+    <div class="monogram">M&amp;M</div>
+    <div class="gold-rule"><span>◆</span></div>
+    <div class="eyebrow">Mellyssa &amp; Messias</div>
+    <h1 style="margin-top:30px">Felipe, preparamos algo especial para você.</h1>
+    <p>Abra com calma. Este convite foi pensado especialmente para você.</p>
+    <button class="button next">Abrir convite</button>
+  </section>
+
+  <section class="panel" data-step="2">
+    <div class="label">Convite especial</div>
+    <h2>Felipe,</h2>
+    <p>Algumas pessoas fazem parte da nossa história de um jeito que a distância não muda.</p>
+    <p>Nós queremos muito ter você ao nosso lado em um dos dias mais importantes das nossas vidas.</p>
+    <div class="gold-rule"><span>◆</span></div>
+    <h2>Você aceita ser nosso padrinho?</h2>
+    <button class="button next">Quero ver a surpresa</button>
+  </section>
+
+  <section class="panel" data-step="3">
+    <div class="label">Uma mensagem nossa</div>
+    <h2>Preparamos um vídeo para você.</h2>
+    <p>Uma mensagem de nós dois, feita com muito carinho.</p>
+    <!-- SUBSTITUA ESTE BLOCO PELO VÍDEO DE VOCÊS -->
+    <div class="video-frame">
+      <div class="video-note">
+        <strong>Área reservada para o vídeo</strong>
+        <span>Insira aqui o vídeo de vocês para o Felipe.</span>
+      </div>
+    </div>
+    <button class="button next">Continuar</button>
+  </section>
+
+  <section class="panel" data-step="4">
+    <div class="label">Seu lugar nesse dia</div>
+    <h2>Mais do que um convite.</h2>
+    <p>Queremos você com a gente para celebrar, aproveitar cada momento e fazer parte dessa nova fase.</p>
+    <p>Mesmo morando nos Estados Unidos, sua presença na nossa história é muito importante para nós — e será ainda mais especial ter você ao nosso lado no nosso casamento.</p>
+    <div class="split">
+      <div class="mini-card">
+        <strong>Celebrar com a gente</strong>
+        <p>Viver o dia, torcer por nós e aproveitar cada momento.</p>
+      </div>
+      <div class="mini-card">
+        <strong>Estar ao nosso lado</strong>
+        <p>Fazer parte da cerimônia e da nossa nova fase.</p>
+      </div>
+    </div>
+    <button class="button next">Ver dress code</button>
+  </section>
+
+  <section class="panel" data-step="5">
+    <div class="dress-card">
+      <div class="label" style="color:#dcc486">Dress code</div>
+      <h2>Padrinho</h2>
+      <p style="margin:0;color:#f2f2f2">Visual clássico, elegante e alinhado com a identidade do casamento.</p>
+      <ul class="dress-list">
+        <li><strong>Terno preto completo</strong>Paletó e calça pretos.</li>
+        <li><strong>Camisa social branca</strong>Sem estampas.</li>
+        <li><strong>Gravata borboleta preta</strong>Para manter o padrão da cerimônia.</li>
+      </ul>
+    </div>
+    <p class="final-note">Evitar gravata tradicional, estampas e acessórios que fujam do padrão.</p>
+    <button class="button next">Finalizar convite</button>
+  </section>
+
+  <section class="panel" data-step="6">
+    <div class="monogram">M&amp;M</div>
+    <div class="gold-rule"><span>◆</span></div>
+    <h2>A distância não diminui a importância que você tem para nós.</h2>
+    <p>Vai ser muito especial celebrar esse dia com você ao nosso lado.</p>
+    <div class="eyebrow">Com carinho, Mellyssa &amp; Messias</div>
+    <button class="subbutton" onclick="restart()">Ver novamente</button>
+  </section>
+
+  <div class="progress" aria-label="Progresso do convite">
+    <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</main>
+<script>
+  let current = 1;
+  const panels = [...document.querySelectorAll('.panel')];
+  const dots = [...document.querySelectorAll('.dot')];
+
+  function showStep(step){
+    panels.forEach(p => p.classList.toggle('active', Number(p.dataset.step) === step));
+    dots.forEach((d,i) => d.classList.toggle('active', i === step - 1));
+    current = step;
+  }
+  document.querySelectorAll('.next').forEach(btn => {
+    btn.addEventListener('click', () => showStep(Math.min(current + 1, panels.length)));
+  });
+  function restart(){ showStep(1); }
+</script>
+</body>
+</html>
