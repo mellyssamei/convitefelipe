@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Um convite especial | M & M</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --preto:#080808;
+    --preto2:#111111;
+    --branco:#f8f7f4;
+    --dourado:#b79a62;
+    --dourado-claro:#d7c08a;
+    --cinza:#aaa69d;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--preto);
+    color:var(--branco);
+    font-family:'Montserrat', sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+}
+
+body.locked{
+    overflow:hidden;
+}
+
+/* ============================= */
+/* ABERTURA */
+/* ============================= */
+
+.intro{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    background:#080808;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    transition:opacity 1s ease, visibility 1s ease;
+}
+
+.intro.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.intro-content{
+    width:min(90%,520px);
+    animation:fadeUp 1.5s ease;
+}
+
+.intro-logo{
+    width:180px;
+    max-width:55vw;
+    margin-bottom:45px;
+}
+
+.intro-small{
+    font-size:10px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:var(--dourado-claro);
+    margin-bottom:20px;
+}
+
+.intro-title{
+    font-family:'Cormorant Garamond', serif;
+    font-size:48px;
+    font-weight:400;
+    line-height:1;
+    margin-bottom:15px;
+}
+
+.intro-subtitle{
+    font-size:12px;
+    letter-spacing:2px;
+    color:var(--cinza);
+    margin-bottom:45px;
+}
+
+.open-btn{
+    background:transparent;
+    border:1px solid var(--dourado);
+    color:var(--branco);
+    padding:15px 34px;
+    font-family:'Montserrat',sans-serif;
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:.4s ease;
+}
+
+.open-btn:hover{
+    background:var(--dourado);
+    color:#080808;
+}
+
+/* ============================= */
+/* GERAL */
+/* ============================= */
+
+section{
+    padding:110px 7%;
+}
+
+.container{
+    width:min(100%,1000px);
+    margin:auto;
+}
+
+.eyebrow{
+    font-size:9px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:var(--dourado-claro);
+    margin-bottom:20px;
+}
+
+.section-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:48px;
+    font-weight:400;
+    line-height:1.05;
+}
+
+.section-title span{
+    color:var(--dourado-claro);
+}
+
+.divider{
+    width:45px;
+    height:1px;
+    background:var(--dourado);
+    margin:28px 0;
+}
+
+/* ============================= */
+/* HERO */
+/* ============================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    background:
+        radial-gradient(circle at 50% 35%,rgba(183,154,98,.09),transparent 35%),
+        var(--preto);
+}
+
+.hero-content{
+    width:min(90%,850px);
+}
+
+.hero-logo{
+    width:145px;
+    margin-bottom:45px;
+}
+
+.hero-small{
+    font-size:10px;
+    letter-spacing:6px;
+    color:var(--dourado-claro);
+    text-transform:uppercase;
+}
+
+.hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(60px,10vw,110px);
+    font-weight:300;
+    line-height:.85;
+    margin:25px 0;
+}
+
+.hero h1 span{
+    font-size:.42em;
+    color:var(--dourado-claro);
+    display:block;
+    margin:14px 0;
+}
+
+.hero-date{
+    font-size:10px;
+    letter-spacing:4px;
+    color:var(--cinza);
+    text-transform:uppercase;
+}
+
+/* ============================= */
+/* VIDEO */
+/* ============================= */
+
+.video-section{
+    background:#0d0d0d;
+}
+
+.video-wrap{
+    margin-top:55px;
+    position:relative;
+    background:#000;
+    border:1px solid rgba(183,154,98,.25);
+    box-shadow:0 25px 80px rgba(0,0,0,.45);
+}
+
+.video-wrap video{
+    width:100%;
+    display:block;
+    max-height:650px;
+    object-fit:cover;
+}
+
+/* ============================= */
+/* CARTA */
+/* ============================= */
+
+.letter{
+    background:var(--branco);
+    color:#111;
+    text-align:center;
+}
+
+.letter .eyebrow{
+    color:#947b4d;
+}
+
+.letter .section-title{
+    color:#111;
+}
+
+.letter-text{
+    max-width:680px;
+    margin:40px auto 0;
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+    line-height:1.65;
+}
+
+.signature{
+    margin-top:45px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+    color:#947b4d;
+}
+
+/* ============================= */
+/* CONVITE PADRINHO */
+/* ============================= */
+
+.invitation{
+    text-align:center;
+    min-height:80vh;
+    display:flex;
+    align-items:center;
+}
+
+.invitation-inner{
+    max-width:800px;
+    margin:auto;
+}
+
+.invitation-name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:72px;
+    font-weight:400;
+    margin:25px 0;
+}
+
+.invitation-question{
+    font-family:'Cormorant Garamond',serif;
+    font-size:31px;
+    line-height:1.4;
+    color:#ddd;
+    max-width:650px;
+    margin:0 auto 45px;
+}
+
+/* ============================= */
+/* DETALHES */
+/* ============================= */
+
+.details{
+    background:#f7f6f2;
+    color:#111;
+}
+
+.details-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    margin-top:60px;
+    background:#d9d5cc;
+}
+
+.detail-card{
+    background:#f7f6f2;
+    padding:45px 25px;
+    text-align:center;
+}
+
+.detail-number{
+    font-family:'Cormorant Garamond',serif;
+    color:#947b4d;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.detail-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:30px;
+    font-weight:500;
+    margin-bottom:12px;
+}
+
+.detail-card p{
+    font-size:10px;
+    letter-spacing:1px;
+    color:#777;
+    line-height:1.7;
+}
+
+/* ============================= */
+/* LOCAL */
+/* ============================= */
+
+.location{
+    text-align:center;
+}
+
+.location-box{
+    margin-top:55px;
+    border:1px solid rgba(183,154,98,.3);
+    padding:60px 30px;
+}
+
+.location-name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.location-address{
+    color:var(--cinza);
+    font-size:11px;
+    letter-spacing:1px;
+    line-height:1.8;
+}
+
+.map-btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 28px;
+    border:1px solid var(--dourado);
+    color:white;
+    text-decoration:none;
+    font-size:9px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    transition:.3s;
+}
+
+.map-btn:hover{
+    background:var(--dourado);
+    color:#111;
+}
+
+/* ============================= */
+/* CONFIRMAÇÃO */
+/* ============================= */
+
+.confirmation{
+    text-align:center;
+    background:
+        radial-gradient(circle at center,rgba(183,154,98,.08),transparent 45%),
+        #080808;
+}
+
+.confirmation-text{
+    max-width:600px;
+    margin:30px auto 40px;
+    color:#aaa;
+    line-height:1.8;
+    font-size:12px;
+}
+
+.confirm-btn{
+    display:inline-block;
+    padding:17px 36px;
+    border:1px solid var(--dourado);
+    color:white;
+    text-decoration:none;
+    font-size:9px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    transition:.3s;
+}
+
+.confirm-btn:hover{
+    background:var(--dourado);
+    color:#111;
+}
+
+/* ============================= */
+/* FINAL */
+/* ============================= */
+
+.final{
+    min-height:55vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.05);
+}
+
+.final-logo{
+    width:110px;
+    margin-bottom:35px;
+}
+
+.final p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+    color:#bbb;
+}
+
+.final-small{
+    margin-top:25px;
+    font-size:8px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--dourado);
+}
+
+/* ============================= */
+/* ANIMAÇÕES */
+/* ============================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:1s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:none;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media(max-width:700px){
+
+    section{
+        padding:85px 6%;
+    }
+
+    .intro-title{
+        font-size:40px;
+    }
+
+    .hero-logo{
+        width:115px;
+    }
+
+    .hero h1{
+        font-size:65px;
+    }
+
+    .section-title{
+        font-size:40px;
+    }
+
+    .letter-text{
+        font-size:21px;
+    }
+
+    .invitation-name{
+        font-size:58px;
+    }
+
+    .invitation-question{
+        font-size:26px;
+    }
+
+    .details-grid{
+        grid-template-columns:1fr;
+    }
+
+    .detail-card{
+        padding:35px 20px;
+    }
+
+    .location-name{
+        font-size:34px;
+    }
+}
+
+</style>
+</head>
+
+<body class="locked">
+
+<!-- ============================= -->
+<!-- CONFIGURAÇÕES -->
+<!-- ============================= -->
+
+<script>
+
+const CONFIG = {
+
+    nome: "Felipe",
+
+    data: "12/12/2026",
+
+    horario: "16:00",
+
+    local: "Novo Horizonte",
+
+    endereco: "Sitio Novo Horizonte",
+
+    mapa: "https://share.google/YXpniBIZkuPI21J7P",
+
+    whatsapp: "http://wa.me/5531971755128"
+
+};
+
+</script>
+
+
+<!-- ============================= -->
+<!-- ABERTURA -->
+<!-- ============================= -->
+
+<div class="intro" id="intro">
+
+    <div class="intro-content">
+
+        <img src="Versão Escura - Monograma MM.png" class="intro-logo">
+
+        <div class="intro-small">
+            Um convite especial
+        </div>
+
+        <div class="intro-title">
+            Felipe
+        </div>
+
+        <div class="intro-subtitle">
+            Temos algo muito importante para te contar.
+        </div>
+
+        <button class="open-btn" onclick="abrirConvite()">
+            Abrir convite
+        </button>
+
+    </div>
+
+</div>
+
+
+<main id="site">
+
+<!-- ============================= -->
+<!-- HERO -->
+<!-- ============================= -->
+
+<section class="hero">
+
+    <div class="hero-content reveal">
+
+
+        <div class="hero-small">
+            Um novo capítulo começa
+        </div>
+
+        <h1>
+            
+            <span>M&M</span>
+            
+        </h1>
+
+        <div class="hero-date">
+            Nosso casamento
+
+<h1>↓</h1>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- VÍDEO -->
+<!-- ============================= -->
+
+<section class="video-section">
+
+    <div class="container reveal">
+
+        <div class="eyebrow">
+            Antes de continuar...
+        </div>
+
+        <h2 class="section-title">
+            Preparamos <span>algo</span> para você.
+        </h2>
+
+        <div class="divider"></div>
+
+        <div class="video-wrap">
+
+            <video
+                id="video"
+                controls
+                playsinline
+                preload="metadata">
+
+                <source src="Felipe.mov" type="video/mp4">
+
+                Seu navegador não suporta vídeos.
+
+            </video>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- CARTA -->
+<!-- ============================= -->
+
+<section class="letter">
+
+    <div class="container reveal">
+
+        <div class="eyebrow">
+            Para você, Felipe
+        </div>
+
+        <h2 class="section-title">
+            Algumas pessoas simplesmente<br>
+            <span>fazem parte da nossa história.</span>
+        </h2>
+
+        <div class="letter-text">
+
+            Felipe,
+
+            <br><br>
+
+            existem pessoas que passam pela nossa vida,
+            e existem aquelas que acabam se tornando parte dela.
+
+            <br><br>
+
+            Quando pensamos em quem gostaríamos de ter
+            ao nosso lado em um dos dias mais importantes
+            das nossas vidas, pensamos em você.
+
+            <br><br>
+
+            Porque celebrar um casamento também é celebrar
+            as pessoas que caminharam com a gente,
+            que compartilharam momentos,
+            histórias e tantos capítulos da nossa vida.
+
+            <br><br>
+
+            E queremos que você esteja presente em mais um deles.
+
+        </div>
+
+        <div class="signature">
+            Com carinho,<br>
+            Messias e Mellyssa.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- CONVITE -->
+<!-- ============================= -->
+
+<section class="invitation">
+
+    <div class="invitation-inner reveal">
+
+        <div class="eyebrow">
+            Agora vem a pergunta
+        </div>
+
+        <div class="invitation-name">
+            Felipe
+        </div>
+
+        <div class="divider" style="margin:30px auto;"></div>
+
+        <div class="invitation-question">
+
+            Você aceita ser nosso padrinho<br>
+            e estar ao nosso lado<br>
+            nesse momento tão especial?
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- DETALHES -->
+<!-- ============================= -->
+
+<section class="details">
+
+    <div class="container reveal">
+
+        <div class="eyebrow">
+            O grande dia
+        </div>
+
+        <h2 class="section-title">
+            Guarde essa <span>data.</span>
+        </h2>
+
+        <div class="details-grid">
+
+            <div class="detail-card">
+
+                <div class="detail-number">01</div>
+
+                <h3>Data</h3>
+
+                <p id="data"></p>
+
+            </div>
+
+            <div class="detail-card">
+
+                <div class="detail-number">02</div>
+
+                <h3>Horário</h3>
+
+                <p id="horario"></p>
+
+            </div>
+
+            <div class="detail-card">
+
+                <div class="detail-number">03</div>
+
+                <h3>Local</h3>
+
+                <p id="local"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- LOCALIZAÇÃO -->
+<!-- ============================= -->
+
+<section class="location">
+
+    <div class="container reveal">
+
+        <div class="eyebrow">
+            Onde estaremos
+        </div>
+
+        <h2 class="section-title">
+            Esperamos você <span>lá.</span>
+        </h2>
+
+        <div class="location-box">
+
+            <div class="location-name" id="localNome"></div>
+
+            <div class="location-address" id="endereco"></div>
+
+            <a
+                href="#"
+                id="mapa"
+                target="_blank"
+                class="map-btn">
+
+                Ver localização
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- CONFIRMAÇÃO -->
+<!-- ============================= -->
+
+<section class="confirmation">
+
+    <div class="container reveal">
+
+
+        <h2 class="section-title">
+            Sua presença vai tornar<br>
+            esse dia ainda mais <span>especial.</span>
+        </h2>
+
+
+    </div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- FINAL -->
+<!-- ============================= -->
+
+<section class="final">
+
+    <div class="container">
+
+        <img
+            src="Versão Escura - Monograma MM.png"
+            class="final-logo">
+
+        <p>
+            Que esse seja apenas o começo<br>
+            de muitos momentos que ainda viveremos juntos.
+        </p>
+
+        <div class="final-small">
+            M & M · Com amor
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* ============================= */
+/* PREENCHER INFORMAÇÕES */
+/* ============================= */
+
+document.getElementById("data").innerText = CONFIG.data;
+document.getElementById("horario").innerText = CONFIG.horario;
+document.getElementById("local").innerText = CONFIG.local;
+
+document.getElementById("localNome").innerText = CONFIG.local;
+document.getElementById("endereco").innerText = CONFIG.endereco;
+
+document.getElementById("mapa").href = CONFIG.mapa;
+document.getElementById("whatsapp").href = CONFIG.whatsapp;
+
+
+/* ============================= */
+/* ABRIR CONVITE */
+/* ============================= */
+
+function abrirConvite(){
+
+    document.getElementById("intro").classList.add("hidden");
+
+    document.body.classList.remove("locked");
+
+    setTimeout(()=>{
+
+        document.querySelectorAll(".reveal").forEach(el=>{
+            el.classList.add("active");
+        });
+
+    },500);
+
+    const video = document.getElementById("video");
+
+    if(video){
+
+        setTimeout(()=>{
+
+            video.play().catch(()=>{});
+
+        },700);
+
+    }
+
+}
+
+
+/* ============================= */
+/* REVEAL AO ROLAR */
+/* ============================= */
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("active");
+
+        }
+
+    });
+
+},{
+    threshold:.15
+});
+
+document.querySelectorAll(".reveal").forEach(el=>{
+    observer.observe(el);
+});
+
+</script>
+
+</body>
+</html>
